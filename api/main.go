@@ -16,7 +16,7 @@ func main() {
 		fmt.Fprintf(w, "OK")
 	})
 	http.HandleFunc("/version", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, version)
+		fmt.Fprintf(w, "{\"version\": \"%s\"}", version)
 	})
 
 	port := "8080"
