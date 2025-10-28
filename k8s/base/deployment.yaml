@@ -1,21 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deployscraft
+  name: deploycraft
+  labels:
+    app: deploycraft
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: deployscraft
-  strategy:
-    type: RollingUpdate
+      app: deploycraft
   template:
     metadata:
       labels:
-        app: deployscraft
+        app: deploycraft
     spec:
       containers:
-        - name: deployscraft
-          image: ghcr.io/augustus281/deployscraft:latest
+        - name: deploycraft
+          image: ghcr.io/augustus281/deploycraft:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
           ports:
             - containerPort: 8080
