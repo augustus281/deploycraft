@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "api.fullname" . }}-{{ .Values.color }}
+  labels:
+    app: {{ include "api.name" . }}
+    color: {{ .Values.color }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "api.name" . }}
+      color: {{ .Values.color }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "api.name" . }}
+        color: {{ .Values.color }}
+    spec:
+      containers:
+        - name: {{ include "api.name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- with .Values.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
