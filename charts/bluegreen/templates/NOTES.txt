@@ -1,0 +1,8 @@
+1. Check the deployment:
+   kubectl get deploy -l app={{ include "api.name" . }}
+
+2. Check which color is active:
+   kubectl get svc {{ include "api.fullname" . }}-svc -o yaml | grep color
+
+3. To switch traffic:
+   helm upgrade {{ .Release.Name }} ./charts/api --set color=green
