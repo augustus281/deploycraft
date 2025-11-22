@@ -1,4 +1,5 @@
 resources:
+  - ../../base
   - blue_deployment.yaml
   - green_deployment.yaml
   - service.yaml
