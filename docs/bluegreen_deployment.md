@@ -72,5 +72,8 @@ Despite the advantages, blue/green deployments come with several challenges that
 5. __Security considerations__: Running 2 environments simultaneously increases the attack surface. Ensuring both environments are compliant with security policies adds to the operational burden.
 6. __Automation requirements__: To effectively manage blue/green deployments, organizations need to invest in automation tools and processes. Manual handling of deployments increases the risk of human error and negates many of the benefits.
 
+## Workflow
+![img.png](image/blue-green-workflow.png)
+
 ## References:
 1. [Blue/Green Deployment](https://octopus.com/devops/software-deployments/blue-green-deployment/)
